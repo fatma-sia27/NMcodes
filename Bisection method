@@ -1,0 +1,42 @@
+Code:
+
+#include <stdio.h>
+#include <math.h>
+#define e 0.0005
+double f(double x)
+{
+    return x * x * x - 4* x -9;
+}
+
+void main()
+{
+    int itr;
+    double a, b, x0=a;
+    printf("Enter value of a and b\n");
+    scanf("%lf", &a);
+    scanf("%lf", &b);
+    if (f(a) * f(b) >= 0)
+    {
+        printf("Initial approximation are incorrect\n");
+    }
+    else {
+        printf("Initial approximation are correct\n");
+    }
+    while ((b - a) >= e){
+
+        x0 = (a + b) / 2;
+
+        if (f(x0) == 0.0)
+            break;
+            
+        else if (f(x0) * f(a) < 0)
+            b = x0;
+        else
+            a = x0;
+        itr++;
+        printf("no. of iteration=%d\t",itr);
+        printf("root=%lf\t",x0);
+        printf("value of functin=%lf\n",f(x0));
+        
+    }
+}       
